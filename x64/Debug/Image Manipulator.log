@@ -1,0 +1,7 @@
+﻿  main.cpp
+C:\Users\bradl\source\repos\Image Manipulator\main.h(46,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\bradl\source\repos\Image Manipulator\main.h(64,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\bradl\source\repos\Image Manipulator\main.h(137,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\bradl\source\repos\Image Manipulator\main.h(150,12): warning C4101: 'Temp': unreferenced local variable
+C:\Users\bradl\source\repos\Image Manipulator\main.h(151,11): warning C4101: 'TempBYTE': unreferenced local variable
+  Image Manipulator.vcxproj -> C:\Users\bradl\source\repos\Image Manipulator\x64\Debug\Image Manipulator.exe

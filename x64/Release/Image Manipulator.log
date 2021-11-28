@@ -1,0 +1,13 @@
+﻿  EasyBMP.cpp
+C:\Users\bradl\source\repos\Image Manipulator\EasyBMP.cpp(994,13): warning C4101: 'ZeroWORD': unreferenced local variable
+  main.cpp
+C:\Users\bradl\source\repos\Image Manipulator\main.h(45,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\bradl\source\repos\Image Manipulator\main.h(63,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\bradl\source\repos\Image Manipulator\main.h(136,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\bradl\source\repos\Image Manipulator\main.h(149,12): warning C4101: 'Temp': unreferenced local variable
+C:\Users\bradl\source\repos\Image Manipulator\main.h(150,11): warning C4101: 'TempBYTE': unreferenced local variable
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 239 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Image Manipulator.vcxproj -> C:\Users\bradl\source\repos\Image Manipulator\x64\Release\Image Manipulator.exe

@@ -1,0 +1,13 @@
+﻿  main.cpp
+main.obj : error LNK2019: unresolved external symbol _GdipAlloc@4 referenced in function "public: static void * __cdecl Gdiplus::GdiplusBase::operator new(unsigned int)" (??2GdiplusBase@Gdiplus@@SAPAXI@Z)
+main.obj : error LNK2019: unresolved external symbol _GdipFree@4 referenced in function "public: static void __cdecl Gdiplus::GdiplusBase::operator delete(void *)" (??3GdiplusBase@Gdiplus@@SAXPAX@Z)
+main.obj : error LNK2019: unresolved external symbol _GdiplusStartup@12 referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _GdiplusShutdown@4 referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _GdipLoadImageFromFile@8 referenced in function "public: __thiscall Gdiplus::Image::Image(wchar_t const *,int)" (??0Image@Gdiplus@@QAE@PB_WH@Z)
+main.obj : error LNK2019: unresolved external symbol _GdipLoadImageFromFileICM@8 referenced in function "public: __thiscall Gdiplus::Image::Image(wchar_t const *,int)" (??0Image@Gdiplus@@QAE@PB_WH@Z)
+main.obj : error LNK2019: unresolved external symbol _GdipCloneImage@8 referenced in function "public: virtual class Gdiplus::Image * __thiscall Gdiplus::Image::Clone(void)" (?Clone@Image@Gdiplus@@UAEPAV12@XZ)
+main.obj : error LNK2019: unresolved external symbol _GdipDisposeImage@4 referenced in function "public: virtual __thiscall Gdiplus::Image::~Image(void)" (??1Image@Gdiplus@@UAE@XZ)
+main.obj : error LNK2019: unresolved external symbol _GdipSaveImageToFile@16 referenced in function "public: enum Gdiplus::Status __thiscall Gdiplus::Image::Save(wchar_t const *,struct _GUID const *,class Gdiplus::EncoderParameters const *)" (?Save@Image@Gdiplus@@QAE?AW4Status@2@PB_WPBU_GUID@@PBVEncoderParameters@2@@Z)
+main.obj : error LNK2019: unresolved external symbol _GdipGetImageEncodersSize@8 referenced in function "enum Gdiplus::Status __cdecl Gdiplus::GetImageEncodersSize(unsigned int *,unsigned int *)" (?GetImageEncodersSize@Gdiplus@@YA?AW4Status@1@PAI0@Z)
+main.obj : error LNK2019: unresolved external symbol _GdipGetImageEncoders@12 referenced in function "enum Gdiplus::Status __cdecl Gdiplus::GetImageEncoders(unsigned int,unsigned int,class Gdiplus::ImageCodecInfo *)" (?GetImageEncoders@Gdiplus@@YA?AW4Status@1@IIPAVImageCodecInfo@1@@Z)
+C:\Users\bradl\source\repos\Image Manipulator\Debug\Image Manipulator.exe : fatal error LNK1120: 11 unresolved externals
