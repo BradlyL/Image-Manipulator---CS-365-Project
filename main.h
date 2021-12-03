@@ -16,27 +16,22 @@
 
 class ImageProcessor {
 public:
-	void FindFormat(char* file);
-	wchar_t ConvertInput(char* file);
-	void ConvertFile(wchar_t format);
-	void ImageInput(char* file);
-	void ParseInput(std::string input);
-	void Grayscale(char* file);
-	void Resize();
+	void findFormat(char* file);
+	wchar_t convertInput(char* file);
+	void convertFile(wchar_t format);
+	void imageInput(char* file);
+	void parseInput(std::string input);
+	void grayscale(char* file);
+	void resize();
 	void callSubProcess();
 	int startMenu();
 private:
 	int fileE;
 	char charFilePath[1024];
 	int resizeAmount;
-	enum codecs
-	{
-		PNG = 0,
-		JPG = 1,
-	};
 };
 
-void ImageProcessor::FindFormat(char* file) {
+void ImageProcessor::findFormat(char* file) {
 	char* fileExtension = strstr(file, ".");
 	if (fileExtension == NULL) {
 		printf("Incomplete file name.\n");
@@ -50,16 +45,16 @@ void ImageProcessor::FindFormat(char* file) {
 	}
 
 	if (strcmp(fileExtension, "png") == 0) {
-		fileE = PNG;
+		fileE = 0;
 	}
 	if (strcmp(fileExtension, "jpg") == 0) {
-		fileE = JPG;
+		fileE = 1;
 	}
 }
 
 //Convert char input to type of wchar_t
-wchar_t ImageProcessor::ConvertInput(char* file) {
-	FindFormat(file);
+wchar_t ImageProcessor::convertInput(char* file) {
+	findFormat(file);
 
 	int fileSize = strlen(file);
 	wchar_t* wc = new wchar_t[fileSize] + 1;
@@ -68,18 +63,18 @@ wchar_t ImageProcessor::ConvertInput(char* file) {
 	return *wc;
 }
 
-void ImageProcessor::ConvertFile(wchar_t format) {
+void ImageProcessor::convertFile(wchar_t format) {
 	Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 	ULONG_PTR gdiplusToken;
 	Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 	Gdiplus::Image* image = NULL;
 	CLSID   encoderClsid;
 	Gdiplus::Status  status;
-	if (fileE == PNG) {
+	if (fileE == 0) {
 		image = new Gdiplus::Image(L"image.png");
 		GetEncoderClsid(L"image/png", &encoderClsid);
 	}
-	if (fileE == JPG) {
+	if (fileE == 1) {
 		image = new Gdiplus::Image(L"image.jpeg");
 		GetEncoderClsid(L"image/jpeg", &encoderClsid);
 	}
@@ -88,7 +83,6 @@ void ImageProcessor::ConvertFile(wchar_t format) {
 		printf("Invalid codec.\n");
 		return;
 	}
-
 
 	//Save to new file
 	status = image->Save(L"image.bmp", &encoderClsid, NULL);
@@ -103,12 +97,12 @@ void ImageProcessor::ConvertFile(wchar_t format) {
 }
 
 //Find file format
-void ImageProcessor::ImageInput(char* file) {
-	wchar_t ImagePath = ConvertInput(file);
-	ConvertFile(ImagePath);
+void ImageProcessor::imageInput(char* file) {
+	wchar_t ImagePath = convertInput(file);
+	convertFile(ImagePath);
 }
 
-void ImageProcessor::ParseInput(std::string input) {
+void ImageProcessor::parseInput(std::string input) {
 	std::ifstream inputCSV;
 	std::string filePath;
 	std::string rescaleVal;
@@ -123,11 +117,11 @@ void ImageProcessor::ParseInput(std::string input) {
 	resizeAmount = stoi(rescaleVal);
 }
 
-void ImageProcessor::Grayscale(char* file) {
+void ImageProcessor::grayscale(char* file) {
 	BMP Image;
 	RGBApixel Temp;
 	ebmpBYTE TempBYTE;
-	Image.ReadFromFile("image.bmp");
+	Image.ReadFromFile("testImage.bmp");
 
 	for (int i = 0; i < Image.TellWidth(); i++)
 	{
@@ -145,7 +139,7 @@ void ImageProcessor::Grayscale(char* file) {
 	Image.WriteToFile("image_grayscale.bmp");
 }
 
-void ImageProcessor::Resize() {
+void ImageProcessor::resize() {
 	BMP Image;
 	RGBApixel Temp;
 	ebmpBYTE TempBYTE;
@@ -194,7 +188,7 @@ void ImageProcessor::callSubProcess()
 
 //Menu
 int ImageProcessor::startMenu() {
-	char imageInput[1024];
+	char imgInput[1024];
 	std::string fileInput;
 	int choice;
 	int menuFlag = 1;
@@ -210,19 +204,22 @@ int ImageProcessor::startMenu() {
 			switch (choice) {
 			case 1:
 				std::cout << "Enter image path: ";
-				std::cin >> imageInput;
-				ImageInput(imageInput);
+				std::cin >> imgInput;
+				imageInput(imgInput);
 				menuFlag = 0;
 				break;
 			case 2:
-				//Grayscale();
+				std::cout << "Enter a .csv file with resize guidelines.\n";
+				std::cin >> imgInput;
+				parseInput(imgInput);
+				grayscale(imgInput);
 				menuFlag = 0;
 				break;
 			case 3:
 				std::cout << "Enter a .csv file with resize guidelines.\n";
 				std::cin >> fileInput;
-				ParseInput(fileInput);
-				Resize();
+				parseInput(fileInput);
+				resize();
 				menuFlag = 0;
 				break;
 			case 4:
